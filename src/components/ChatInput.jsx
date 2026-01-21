@@ -34,7 +34,13 @@ export function ChatInput({chatMessages, setchatMessages}) {
        setInputText('')
        // send the message to chatbot server
     }
-    
+    function handleKeyDown(event){
+      if(event.key === "Enter")
+      {
+        sendMessage();
+      }
+        
+    }
     return (
       <div className="chat-header">
         <input
@@ -42,6 +48,7 @@ export function ChatInput({chatMessages, setchatMessages}) {
           type="text"
           placeholder="Send a message to Chatbot"
           onChange={saveInputText}
+          onKeyDown={handleKeyDown}
           value = {inputText}
         />
         <button className="send-button" onClick={sendMessage}>Send</button>
